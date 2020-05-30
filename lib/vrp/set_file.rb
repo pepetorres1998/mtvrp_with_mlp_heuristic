@@ -22,7 +22,7 @@ module VRP
       when 'coordinates'
         parse_coordinates_file
       else
-        raise WrongTypeError
+        raise VRP::WrongTypeError
       end
     end
 
