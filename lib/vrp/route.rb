@@ -1,6 +1,4 @@
 require 'pry'
 
-module VRP
-  class Route
-  end
+class Route
 end

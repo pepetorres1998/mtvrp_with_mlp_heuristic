@@ -1,6 +1,4 @@
 require 'pry'
 
-module VRP
-  class Node
-  end
+class Node
 end
