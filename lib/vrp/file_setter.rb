@@ -6,6 +6,7 @@ require_relative '../vehicle'
 require_relative 'heuristic'
 require_relative 'wrong_type_error'
 require_relative 'services/matrix_parser'
+require_relative 'services/matrix_maker'
 
 module VRP
   class FileSetter
