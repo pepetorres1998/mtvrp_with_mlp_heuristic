@@ -8,7 +8,7 @@ require_relative 'wrong_type_error'
 require_relative 'services/matrix_parser'
 
 module VRP
-  class SetFile
+  class FileSetter
     attr_accessor :lines, :type, :clients, :nodes, :vehicle, :matrix
 
     def initialize(**attrs)
