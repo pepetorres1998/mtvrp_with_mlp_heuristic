@@ -1,9 +1,10 @@
 require 'pry'
 require_relative 'lib/vrp/file_setter'
 
-lines = File.readlines('./test_instances/MT-DMP10s0-01.txt').map(&:strip).map { |line| line.gsub /\t/, ',' }
-lines2 = File.readlines('./test_instances/VRPNC1m.txt').map(&:strip).map { |line| line.gsub /\t/, ',' }
-VRP::FileSetter.new(lines: lines, type: 'matrix')
-VRP::FileSetter.new(lines: lines2, type: 'coordinates')
+file = File.expand_path('MT-DMP10s0-01.txt', 'test_instances')
+file2 = File.expand_path('VRPNC1m.txt', 'test_instances')
+
+VRP::FileSetter.new(file: file, type: 'matrix')
+VRP::FileSetter.new(file: file2, type: 'coordinates')
 
 puts 'hi'

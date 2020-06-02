@@ -13,7 +13,7 @@ module VRP
     attr_accessor :lines, :type, :clients, :nodes, :vehicle, :matrix
 
     def initialize(**attrs)
-      @lines = attrs[:lines]
+      @lines = File.readlines(attrs[:file].to_s).map(&:strip).map { |line| line.gsub /\t/, ',' }
       @type = attrs[:type]
       @nodes = [Node.new(demand: 0, deposit: true, id: 0)]
 
