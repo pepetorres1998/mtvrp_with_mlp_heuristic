@@ -1,5 +1,6 @@
 require_relative 'algorithm'
 require_relative 'local_search'
+require_relative '../path'
 
 module VRP
   class Delegator
@@ -15,12 +16,20 @@ module VRP
     end
 
     def execute_algorithms
-      options.each { |option| self.path = Object.const_get("VRP::#{option}").new(attributes) }
+      options[:times].times do
+        options[:algorithms].each do |algorithm|
+          save_path Object.const_get("VRP::#{algorithm}").new(attributes).path
+        end
+      end
+    end
+
+    def save_path(new_path)
+      self.path = new_path if path.nil? || new_path.latency < path.latency
     end
 
     def attributes
       {
-        nodes: nodes,
+        nodes: nodes.clone,
         vehicle: vehicle,
         matrix: matrix,
         path: path

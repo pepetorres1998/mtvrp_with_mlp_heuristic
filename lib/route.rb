@@ -11,6 +11,12 @@ class Route
     @vehicle = attrs[:vehicle]
   end
 
+  def add_k_node(k_node)
+    index_node = path.find { |node| node.id == k_node[:path].first }
+    insertion_index = path.index(index_node) + 1
+    path.insert(insertion_index, k_node[:k_node])
+  end
+
   def add_node(node)
     if limit_not_reached(node)
       self.path << node

@@ -5,7 +5,7 @@ class Path
   attr_writer :routes
 
   def initialize(**attrs)
-    @routes = attrs[:routes]
+    @routes = attrs[:routes] ? attrs[:routes] : []
   end
 
   def routes
@@ -17,7 +17,7 @@ class Path
   end
 
   def add_route(route)
-    self.routes << route if route.is_a? Route
+    @routes << route if route.is_a? Route
   end
 
   def nodes_latencies
