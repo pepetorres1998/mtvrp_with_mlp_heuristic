@@ -19,6 +19,10 @@ class Route
     end
   end
 
+  def final_path
+    [path.map(&:id), deposit.id].flatten
+  end
+
   def paths
     path.map.with_index do |from, to|
       if to != path.count - 1

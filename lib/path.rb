@@ -12,6 +12,10 @@ class Path
     @routes.sort_by(&:latency)
   end
 
+  def final_path
+    routes.map(&:final_path)
+  end
+
   def add_route(route)
     self.routes << route if route.is_a? Route
   end
