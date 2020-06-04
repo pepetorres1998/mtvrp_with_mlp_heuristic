@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'vrp/errors/limit_reached'
 
 class Route
   attr_accessor :path, :deposit, :vehicle, :matrix
@@ -11,7 +12,7 @@ class Route
   end
 
   def add_node(node)
-    if limit_reached(node)
+    if limit_not_reached(node)
       self.path << node
     else
       raise VRP::Errors::LimitReached
@@ -28,12 +29,12 @@ class Route
     end
   end
 
-  def nodes_latencies
+  def nodes_latencies(initial_amount = 0)
     total = []
 
     paths.each.with_index do |path, index|
       total << if index == 0
-                 path
+                 path + initial_amount
                else
                  path + total[index - 1]
                end
