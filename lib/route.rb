@@ -8,8 +8,6 @@ class Route
     @matrix = attrs[:matrix]
     @deposit = attrs[:deposit]
     @vehicle = attrs[:vehicle]
-
-    total_latency
   end
 
   def add_node(node)
